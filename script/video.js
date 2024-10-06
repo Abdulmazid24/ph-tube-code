@@ -30,6 +30,18 @@ const loadCategoryVideos = id => {
 const displayVideos = videos => {
   const videoContainer = document.getElementById('videos');
   videoContainer.innerHTML = '';
+  if (videos.length === 0) {
+    videoContainer.classList.remove('grid');
+    videoContainer.innerHTML = `
+    <div class=" flex flex-col gap-5 justify-center">
+    <img class="mx-auto" src="/assets/Icon.png"/>
+    <h2 class="text-xl font-bold text-center"> No Content Here in this Category</h2>
+    </div>
+    `;
+    return;
+  } else {
+    videoContainer.classList.add('grid');
+  }
   videos.forEach(video => {
     console.log(video);
     const card = document.createElement('div');
